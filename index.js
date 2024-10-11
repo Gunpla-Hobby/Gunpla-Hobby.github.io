@@ -65,10 +65,11 @@ function checkIfHorizontal() {
 
   window.addEventListener('resize', checkIfHorizontal)
   checkIfHorizontal()
-})()
 
-setInterval(() => {
   if (sessionStorage.debug) {
-    navigator.clipboard.writeText(JSON.stringify(controls.getCameraAngles()))
+    canvas.addEventListener('touchend', () => {
+      navigator.clipboard.writeText(JSON.stringify(controls.getCameraAngles()))
+      document.querySelector('.accent-lines').style.display = 'none'
+    })
   }
-}, 1000)
+})()
