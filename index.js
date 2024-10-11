@@ -69,7 +69,7 @@ function checkIfHorizontal() {
   if (sessionStorage.debug) {
     canvas.addEventListener('touchend', () => {
       navigator.clipboard.writeText(JSON.stringify(controls.getCameraAngles()))
-      document.querySelector('.accent-lines').style.display = 'none'
+      document.getElementById('particleCanvas').style.display = 'none'
     })
   }
 })()
