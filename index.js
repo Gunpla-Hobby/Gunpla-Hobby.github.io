@@ -49,7 +49,7 @@ function checkIfHorizontal() {
 }
 
 (async () => {
-  const res = await fetch(`splatData/_.json?dummy=${Math.floor(new Date().getTime())}`)
+  const res = await fetch(`splatData/0000.json?dummy=${Math.floor(new Date().getTime())}`)
   const data = await res.json()
 
   initSplat()
