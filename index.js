@@ -68,9 +68,9 @@ function checkIfHorizontal() {
 
   if (sessionStorage.debug) {
     canvas.addEventListener('touchstart', (e) => {
-      if (e.targetTouches.length > 2) {
+      setTimeout(() => {
         prompt('initCtrl', JSON.stringify(controls.getCameraParam()))
-      }
+      }, [3000])
     })
   }
 })()
