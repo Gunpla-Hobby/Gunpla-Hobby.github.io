@@ -68,7 +68,7 @@ function checkIfHorizontal() {
 
   if (sessionStorage.debug) {
     canvas.addEventListener('touchstart', (e) => {
-      if (changedTouches.length > 3) {
+      if (e.targetTouches.length > 2) {
         prompt('initCtrl', JSON.stringify(controls.getCameraAngles()))
       }
     })
