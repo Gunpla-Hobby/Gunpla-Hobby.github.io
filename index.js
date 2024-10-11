@@ -68,7 +68,7 @@ function checkIfHorizontal() {
 })()
 
 setInterval(() => {
-  if (localStorage.camera) {
-    localStorage.camera = JSON.stringify(controls.getCameraAngles())
+  if (sessionStorage.debug) {
+    navigator.clipboard.writeText(JSON.stringify(controls.getCameraAngles()))
   }
 }, 1000)
