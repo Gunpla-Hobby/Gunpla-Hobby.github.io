@@ -67,7 +67,7 @@ function checkIfHorizontal() {
   checkIfHorizontal()
 
   if (sessionStorage.debug) {
-    canvas.addEventListener('touchend', () => {
+    canvas.addEventListener('click', () => {
       navigator.clipboard.writeText(JSON.stringify(controls.getCameraAngles()))
       document.getElementById('particleCanvas').style.display = 'none'
     })
