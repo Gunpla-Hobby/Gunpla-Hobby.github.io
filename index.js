@@ -35,7 +35,7 @@ async function loadModel({ filename, initCtrl }) {
     },
   )
   if (initCtrl) {
-    controls.setCameraParam(initCtrl)
+    controls.setCameraParam(JSON.parse(initCtrl))
     controls.autoRotate = 0.0025
   }
 }
@@ -50,34 +50,29 @@ function checkIfHorizontal() {
   }
 }
 
-(async () => {
-  const res = await fetch(`splatData/0000.json?dummy=${Math.floor(new Date().getTime())}`)
-  const data = await res.json()
+initSplat()
 
-  initSplat()
+// data.forEach(([fileName, title, desc]) => {
+//   const template = document.getElementById('slide-template')
+//   const clone = template.content.cloneNode(true)
+//   clone.querySelector('img').src = `splatData/${fileName}.png`
+//   document.querySelector('.swiper-wrapper').append(clone)
+// })
 
-  // data.forEach(([fileName, title, desc]) => {
-  //   const template = document.getElementById('slide-template')
-  //   const clone = template.content.cloneNode(true)
-  //   clone.querySelector('img').src = `splatData/${fileName}.png`
-  //   document.querySelector('.swiper-wrapper').append(clone)
-  // })
+await loadModel(window.data[0])
 
-  await loadModel(data[0])
+window.addEventListener('resize', checkIfHorizontal)
+checkIfHorizontal()
 
-  window.addEventListener('resize', checkIfHorizontal)
-  checkIfHorizontal()
-
-  if (sessionStorage.debug) {
-    document.getElementById('particleCanvas').style.display = 'none'
-    canvas.addEventListener('touchend', () => {
-      try {
-        setTimeout(() => {
-          prompt('initCtrl', JSON.stringify(controls.getCameraParam()))
-        }, [3000])
-      } catch (e) {
-        alert(e)
-      }
-    })
-  }
-})()
+if (sessionStorage.debug) {
+  document.getElementById('particleCanvas').style.display = 'none'
+  canvas.addEventListener('touchend', () => {
+    try {
+      setTimeout(() => {
+        prompt('initCtrl', JSON.stringify(controls.getCameraParam()))
+      }, [3000])
+    } catch (e) {
+      alert(e)
+    }
+  })
+}
