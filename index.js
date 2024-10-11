@@ -36,7 +36,7 @@ async function loadModel({ filename, initCtrl }) {
   )
   if (initCtrl) {
     controls.setCameraParam(initCtrl)
-    controls.autoRotate = true
+    controls.autoRotate = 1
   }
 }
 
