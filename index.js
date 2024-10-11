@@ -5,6 +5,7 @@ const progressDialog = document.getElementById("progress-dialog")
 const progressIndicator = document.getElementById("progress-indicator")
 
 const renderer = new SPLAT.WebGLRenderer(canvas)
+renderer.backgroundColor = new SPLAT.Color32(0, 0, 0, 0);
 const scene = new SPLAT.Scene()
 const camera = new SPLAT.Camera()
 const controls = new SPLAT.OrbitControls(camera, canvas)

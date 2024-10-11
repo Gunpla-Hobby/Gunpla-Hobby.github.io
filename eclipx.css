@@ -38,7 +38,6 @@ body {
   margin: 0 auto;
 
   opacity: 0;
-  translate: 0 -1em;
   animation: load 2s ease-in 2s forwards, up 1.4s ease-out 2s forwards;
 }
 
