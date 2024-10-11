@@ -34,7 +34,7 @@ async function loadModel({ filename, initCtrl }) {
     },
   )
   if (initCtrl) {
-    controls.setCameraAngles(initCtrl)
+    // controls.setCameraParam(initCtrl)
   }
 }
 
@@ -69,7 +69,7 @@ function checkIfHorizontal() {
   if (sessionStorage.debug) {
     canvas.addEventListener('touchstart', (e) => {
       if (e.targetTouches.length > 2) {
-        prompt('initCtrl', JSON.stringify(controls.getCameraAngles()))
+        prompt('initCtrl', JSON.stringify(controls.getCameraParam()))
       }
     })
   }
