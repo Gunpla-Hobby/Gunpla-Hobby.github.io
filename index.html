@@ -1,105 +1,75 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="carousel.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
 
-  <body>
-    <!-- Gallery by: https://www.instagram.com/supahfunk/ -->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
 
-<div class="carousel">
-  <div class="carousel-item">
-    <div class="carousel-box">
-      <div class="title">Paris</div>
-      <div class="num">01</div>
-      <img src="https://media.istockphoto.com/id/949299844/it/foto/vista-prospettica-dellesterno-delledificio-contemporaneo.jpg?s=612x612&w=0&k=20&c=_DR1aRHuTEV3EYBJo1ZXq1pF4SgwB9EVWQLaBj4sC5g=" />
+<body>
+  <div class="page">
+    <div class="swiper">
+      <template id="slide-template">
+        <img></img>
+      </template>
+    </div>
+    <!--div>祥平君's&nbsp;</div>
+    <div>玩物喪志</div-->
+  </div>
+
+  <div class="header">
+    <div class="spotlight">
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
   </div>
 
-  <div class="carousel-item">
-    <div class="carousel-box">
-      <div class="title">Warsaw</div>
-      <div class="num">02</div>
-      <img src="https://media.istockphoto.com/id/1150545984/it/foto/palazzo-moderno-di-lusso-con-piscina.jpg?s=612x612&w=0&k=20&c=Pbrai_VGc9tUviMCF1UaBErdS1YGyIVWsD29jzMZwTY=" />
+  <canvas id="particleCanvas"></canvas>
+
+  <div class="accent-lines">
+    <div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
   </div>
 
-  <div class="carousel-item">
-    <div class="carousel-box">
-      <div class="title">Madrid</div>
-      <div class="num">03</div>
-      <img
-        src="https://media.istockphoto.com/id/1214351345/it/foto/guardando-direttamente-lo-skyline-del-quartiere-finanziario-nel-centro-di-londra-immagine-di.jpg?s=612x612&w=0&k=20&c=oNNbPzPvcQ-4RA6AeatNIxHQIafBiXmDRtUUY0Ska-I="
-      />
-    </div>
-  </div>
+  <script>
+    const loadScript = (name, useModule = true) => new Promise((resolve) => {
+      const script = document.createElement('script')
+      script.src = `${name}?dummy=${new Date().getTime()}`
+      script.type = useModule ? 'module' : 'text/javascript'
+      script.onload = resolve
+      document.head.appendChild(script)
+    })
 
-  <div class="carousel-item">
-    <div class="carousel-box">
-      <div class="title">Sydney</div>
-      <div class="num">04</div>
-      <img src="https://media.istockphoto.com/id/904390980/it/foto/foto-di-architettura-contemporanea-astratta.jpg?s=612x612&w=0&k=20&c=_P4Wmx5nq5MeDuimpNklKCBlrLovmCyd9lfiMKeJZDs=" />
-    </div>
-  </div>
+    const loadStyle = (name) => new Promise((resolve) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = `${name}?dummy=${Math.floor(new Date().getTime())}`
+      link.onload = resolve
+      document.head.appendChild(link)
+    })
 
-  <div class="carousel-item">
-    <div class="carousel-box">
-      <div class="title">Istanbul</div>
-      <div class="num">05</div>
-      <img src="https://media.istockphoto.com/id/130408311/it/foto/piscina-allesterno-della-casa-moderna-al-crepuscolo.jpg?s=612x612&w=0&k=20&c=ZoVjx7uDjoHKmpM1ayW6UR1SQOoYh_xx-QMG_qeOYs0=" />
-    </div>
-  </div>
+    Promise.all([
+      loadStyle('eclipx.css'),
+      loadScript('eclipx.js'),
+      loadScript('gsplat.js'),
+      loadStyle('index.css'),
+    ]).then(() => {
+      loadScript('index.js')
+    })
+  </script>
+</body>
 
-  <div class="carousel-item">
-    <div class="carousel-box">
-      <div class="title">Prague</div>
-      <div class="num">06</div>
-      <img src="https://media.istockphoto.com/id/1299954175/it/foto/villa-cubica-moderna.jpg?s=612x612&w=0&k=20&c=DhGhb3c1E3DW_fbrWJ_R_Zh0Lbwu6syFeRLsKlZ9no8=" />
-    </div>
-  </div>
-
-  <div class="carousel-item">
-    <div class="carousel-box">
-      <div class="title">Munich</div>
-      <div class="num">07</div>
-      <img src="https://media.istockphoto.com/id/926689776/it/foto/vista-ad-angolo-basso-dei-grattacieli-di-new-york.jpg?s=612x612&w=0&k=20&c=DmEB0Ty7ZwDnBoU5SuA8FNevOp4G1UcECw5aS4vA9A8=" />
-    </div>
-  </div>
-
-  <div class="carousel-item">
-    <div class="carousel-box">
-      <div class="title">Venice</div>
-      <div class="num">08</div>
-      <img src="https://media.istockphoto.com/id/1191376167/it/foto/villa-dellisola.jpg?s=612x612&w=0&k=20&c=PKslWo4FdbjinohKQlK_oWL34jqAsnzMTdy2bxEAf-I=" />
-    </div>
-  </div>
-
-  <div class="carousel-item">
-    <div class="carousel-box">
-      <div class="title">Oslo</div>
-      <div class="num">09</div>
-      <img src="https://media.istockphoto.com/id/184316397/it/foto/londra-edifici-aziendali.jpg?s=612x612&w=0&k=20&c=XqrRxEPzFnwRFk7PQrCiu9-FPfCTPyMe5BKKaxYXCs8=" />
-    </div>
-  </div>
-</div>
-
-<div class="layout">
-  <div class="box">
-  祥平君<br />visual content creation<br />for lifestyle branding.
-  祥平君<br />visual content creation<br />for lifestyle branding.
-  祥平君<br />visual content creation<br />for lifestyle branding.
-  </div>
-</div>
-
-    <canvas id="canvas"></canvas>
-	
-    <script>
-
-    </script>
-	
-    <script src="carousel.js"></script>
-    <script src="3dViewer.js" type="module"></script>
-  </body>
 </html>

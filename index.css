@@ -1,0 +1,77 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  overflow: hidden;
+  font-family: Iansui;
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  color: #d8ecf8be;
+  background: #05060f linear-gradient(0deg, rgba(216, 236, 248, .06), rgba(152, 192, 239, .06));
+}
+
+.page {
+  min-height: 100dvh;
+}
+
+.horizontal .page {
+  width: 40em;
+}
+
+.footer *:first-child {
+  font-size: 2rem;
+}
+
+.footer *:last-child {
+  font-size: 4rem;
+}
+
+.swiper {
+  /* width: 100%; */
+  /* height: 100%;*/
+}
+
+.swiper-slide {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  /* object-fit: cover;*/
+}
+
+@font-face {
+  font-family: 'Iansui';
+  src: url('Iansui-Regular.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: 'UoqMunThenKhung';
+  src: url('UoqMunThenKhung-1.000.ttf') format("truetype");
+}
+
+/*@font-face {
+  font-family: 'KsoBunryu';
+  src: url('KsoBunryu.otf') format("opentype");
+}
+
+@font-face {
+  font-family: 'KsoKanteiryu';
+  src: url('KsoKanteiryu.otf') format("opentype");
+}
+
+@font-face {
+  font-family: 'KsoYose';
+  src: url('KsoYose.otf') format("opentype");
+}*/
