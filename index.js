@@ -5,8 +5,9 @@ const renderer = new SPLAT.WebGLRenderer(canvas)
 renderer.backgroundColor = new SPLAT.Color32(0, 0, 0, 0);
 const scene = new SPLAT.Scene()
 const camera = new SPLAT.Camera()
-const controls = new SPLAT.OrbitControls(camera, canvas)
+const controls = new SPLAT.OrbitControls(camera, canvas, 0, 0, 0, false)
 controls.zoomSpeed = 0.5
+controls.orbitSpeed = 2
 
 function initSplat() {
   const handleResize = () => {
@@ -35,6 +36,7 @@ async function loadModel({ filename, initCtrl }) {
   )
   if (initCtrl) {
     controls.setCameraParam(initCtrl)
+    controls.autoRotate = true
   }
 }
 
