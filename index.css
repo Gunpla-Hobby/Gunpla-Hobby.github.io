@@ -19,6 +19,11 @@ body {
   min-height: 100dvh;
 }
 
+#splatCanvas {
+  width: 100%;
+  height: 100%;
+}
+
 .horizontal .page {
   width: 40em;
 }
