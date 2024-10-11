@@ -5,11 +5,74 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    html {
+      font-size: 62.5%;
+    }
+
+    body {
+      overflow: hidden;
+      font-family: Iansui;
+      height: 100dvh;
+      margin: 0;
+      padding: 0;
+      font-size: 1.2rem;
+      display: flex;
+      justify-content: center;
+      color: #d8ecf8be;
+      background: #05060f linear-gradient(0deg, rgba(216, 236, 248, .06), rgba(152, 192, 239, .06));
+    }
+
+    #splatCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100dvh;
+    }
+
+    .page {
+      min-width: 100vw;
+      min-height: 100dvh;
+    }
+
+    .horizontal .page {
+      max-width: 42rem;
+      min-width: 42rem;
+    }
+
+    .swiper {
+      width: 100%;
+      position: absolute;
+      display: flex;
+      bottom: 2rem;
+    }
+
+    .swiper .item {}
+
+    .swiper .item img {
+      border-radius: 2em;
+      border-radius: 0.75rem;
+      border: 1px solid #878DB1;
+      width: 5rem;
+      height: 5rem;
+    }
+
+    @font-face {
+      font-family: 'Iansui';
+      src: url('Iansui-Regular.ttf') format("truetype");
+    }
+
+    @font-face {
+      font-family: 'UoqMunThenKhung';
+      src: url('UoqMunThenKhung-1.000.ttf') format("truetype");
+    }
+  </style>
 </head>
 
 <body>
+  <canvas id="splatCanvas"></canvas>
   <div class="page">
-    <canvas id="splatCanvas" style="display: none; width: 100%; height: 100%;"></canvas>
     <div class="swiper">
       <!--template id="slide-template">
       </template-->
@@ -68,7 +131,6 @@
       loadStyle('eclipx.css'),
       loadScript('eclipx.js'),
       loadScript('gsplat.js'),
-      loadStyle('index.css'),
     ]).then(() => {
       loadScript('index.js')
     })

@@ -1,21 +1,16 @@
 import * as SPLAT from "./gsplat.js"
 
 const canvas = document.getElementById("splatCanvas")
-const progressDialog = document.getElementById("progress-dialog")
-const progressIndicator = document.getElementById("progress-indicator")
-
 const renderer = new SPLAT.WebGLRenderer(canvas)
 renderer.backgroundColor = new SPLAT.Color32(0, 0, 0, 0);
 const scene = new SPLAT.Scene()
 const camera = new SPLAT.Camera()
 const controls = new SPLAT.OrbitControls(camera, canvas)
+controls.zoomSpeed = 0.5
 
-async function loadModel(url) {
-  await SPLAT.Loader.LoadAsync(url, scene, (progress) => (console.log(progress)))
-  // progressDialog.close()
-
+function initSplat() {
   const handleResize = () => {
-    renderer.setSize(canvas.clientWidth, canvas.clientHeight)
+    renderer.setSize(document.body.clientWidth, document.body.clientHeight)
   }
 
   const frame = () => {
@@ -30,6 +25,19 @@ async function loadModel(url) {
   requestAnimationFrame(frame)
 }
 
+async function loadModel({ filename, initCtrl }) {
+  await SPLAT.Loader.LoadAsync(
+    `splatData/${filename}.splat`,
+    scene,
+    (progress) => {
+      // console.log(progress)
+    },
+  )
+  if (initCtrl) {
+    controls.setCameraAngles(initCtrl)
+  }
+}
+
 function checkIfHorizontal() {
   const dvh100 = window.innerHeight
   const vw100 = window.innerWidth
@@ -41,8 +49,10 @@ function checkIfHorizontal() {
 }
 
 (async () => {
-  const res = await fetch(`splatData.json?dummy=${Math.floor(new Date().getTime())}`)
+  const res = await fetch(`splatData/_.json?dummy=${Math.floor(new Date().getTime())}`)
   const data = await res.json()
+
+  initSplat()
 
   // data.forEach(([fileName, title, desc]) => {
   //   const template = document.getElementById('slide-template')
@@ -51,8 +61,14 @@ function checkIfHorizontal() {
   //   document.querySelector('.swiper-wrapper').append(clone)
   // })
 
-  loadModel('splatData/GGun01.splat')
+  await loadModel(data[0])
 
   window.addEventListener('resize', checkIfHorizontal)
   checkIfHorizontal()
 })()
+
+setInterval(() => {
+  if (localStorage.camera) {
+    localStorage.camera = JSON.stringify(controls.getCameraAngles())
+  }
+}, 1000)
