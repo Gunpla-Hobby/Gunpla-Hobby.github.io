@@ -68,7 +68,7 @@ function checkIfHorizontal() {
 
   if (sessionStorage.debug) {
     document.body.addEventListener('click', () => {
-      prompt('initCtrl', navigator.clipboard.writeText(JSON.stringify(controls.getCameraAngles())))
+      prompt('initCtrl', JSON.stringify(controls.getCameraAngles()))
     })
   }
 })()
