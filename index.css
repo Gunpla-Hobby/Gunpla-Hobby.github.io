@@ -1,0 +1,77 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  overflow: hidden;
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  color: #d8ecf8be;
+  background: #05060f linear-gradient(0deg, rgba(216, 236, 248, .06), rgba(152, 192, 239, .06));
+  font-family: UoqMunThenKhung;
+}
+
+#splatCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100dvh;
+}
+
+.swiper {
+  width: 100vw;
+  padding: 0 1rem;
+  position: fixed;
+  display: flex;
+  bottom: 2rem;
+}
+
+.swiper .item img {
+  border-radius: 2em;
+  border-radius: 0.75rem;
+  border: 1px solid #878DB1;
+  width: 5rem;
+  height: 5rem;
+}
+
+@font-face {
+  font-family: 'UoqMunThenKhung';
+  src: url('font/UoqMunThenKhung-1.000.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: 'KsoTouryu';
+  src: url('font/KsoTouryu.otf') format("opentype");
+}
+
+.text {
+  max-width: 40rem;
+  min-width: 40rem;
+  padding-top: 1rem;
+  padding-bottom: 20dvh;
+  writing-mode: vertical-rl;
+  white-space: pre-line;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.text .title {
+  font-size: 5rem;
+  line-height: 5.5rem;
+  color: #d8ecf8;
+  text-shadow: 0 2px 16px rgba(174, 207, 242, .24);
+  background: linear-gradient(0deg, #d8ecf8 0, #98c0ef 100%);
+  background-clip: text;
+}
+
+.text .description {
+  padding-top: 0.5rem;
+  font-size: 2rem;
+  line-height: 2.2rem;
+}

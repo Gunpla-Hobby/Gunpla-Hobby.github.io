@@ -9,6 +9,16 @@ const controls = new SPLAT.OrbitControls(camera, canvas, 0, 0, 0, false)
 controls.zoomSpeed = 0.5
 controls.orbitSpeed = 2
 
+function checkIfHorizontal() {
+  const dvh100 = window.innerHeight
+  const vw100 = window.innerWidth
+  if (dvh100 < vw100) {
+    document.body.classList.add('horizontal')
+  } else {
+    document.body.classList.remove('horizontal')
+  }
+}
+
 function initSplat() {
   const handleResize = () => {
     renderer.setSize(document.body.clientWidth, document.body.clientHeight)
@@ -25,6 +35,7 @@ function initSplat() {
 
   requestAnimationFrame(frame)
 }
+initSplat()
 
 async function loadModel({ filename, initCtrl }) {
   await SPLAT.Loader.LoadAsync(
@@ -40,17 +51,15 @@ async function loadModel({ filename, initCtrl }) {
   }
 }
 
-function checkIfHorizontal() {
-  const dvh100 = window.innerHeight
-  const vw100 = window.innerWidth
-  if (dvh100 < vw100) {
-    document.body.classList.add('horizontal')
-  } else {
-    document.body.classList.remove('horizontal')
-  }
+function loadDataItem(item) {
+  const title = document.querySelector('.text .title')
+  title.textContent = item.title
+  title.style.fontFamily = `${item.titleFont}, "UoqMunThenKhung"`
+  document.querySelector('.text .description').textContent = item.description
+  loadModel(item)
 }
 
-initSplat()
+loadDataItem(window.data[0])
 
 // data.forEach(([fileName, title, desc]) => {
 //   const template = document.getElementById('slide-template')
@@ -59,7 +68,6 @@ initSplat()
 //   document.querySelector('.swiper-wrapper').append(clone)
 // })
 
-await loadModel(window.data[0])
 
 window.addEventListener('resize', checkIfHorizontal)
 checkIfHorizontal()
