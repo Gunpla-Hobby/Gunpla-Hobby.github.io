@@ -34,7 +34,7 @@ async function loadModel({ filename, initCtrl }) {
     },
   )
   if (initCtrl) {
-    // controls.setCameraParam(initCtrl)
+    controls.setCameraParam(initCtrl)
   }
 }
 
