@@ -25,6 +25,8 @@ function checkIfHorizontal() {
     document.body.classList.remove('horizontal')
   }
 }
+window.addEventListener('resize', checkIfHorizontal)
+checkIfHorizontal()
 
 /* init splat viewer */
 const handleResize = () => {
@@ -75,30 +77,26 @@ loadDataItem(window.data[0])
 // })
 
 
-window.addEventListener('resize', checkIfHorizontal)
-checkIfHorizontal()
+if (window.location.pathname.startsWith('/debug')) {
+  document.getElementById('particleCanvas').style.display = 'none'
 
-//if (window.location.pathname.startsWith('/debug')) {
+  const app = initializeApp({
+    apiKey: "AIzaSyAPwxFKKRVV8WNtNEGxdYtStHwe6A4cBdA",
+    authDomain: "gunpla-hobby.firebaseapp.com",
+    databaseURL: "https://gunpla-hobby-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "gunpla-hobby",
+    storageBucket: "gunpla-hobby.appspot.com",
+    messagingSenderId: "165696452489",
+    appId: "1:165696452489:web:6fe3240a62637d1b9c9358"
+  })
+  initializeAppCheck(app, {
+    provider: new ReCaptchaV3Provider('6Ldhml8qAAAAALT_6VS1bXdqZn_CIMozlZShYSC4'),
+    isTokenAutoRefreshEnabled: true
+  })
 
-document.getElementById('particleCanvas').style.display = 'none'
+  const database = getDatabase(app)
 
-const app = initializeApp({
-  apiKey: "AIzaSyAPwxFKKRVV8WNtNEGxdYtStHwe6A4cBdA",
-  authDomain: "gunpla-hobby.firebaseapp.com",
-  databaseURL: "https://gunpla-hobby-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "gunpla-hobby",
-  storageBucket: "gunpla-hobby.appspot.com",
-  messagingSenderId: "165696452489",
-  appId: "1:165696452489:web:6fe3240a62637d1b9c9358"
-})
-
-const appCheck = initializeAppCheck(app, {
-  provider: new ReCaptchaV3Provider('6Ldhml8qAAAAALT_6VS1bXdqZn_CIMozlZShYSC4'),
-  isTokenAutoRefreshEnabled: true
-})
-
-const database = getDatabase(app)
-
-setTimeout(() => {
-  set(ref(database, '/initCtrl'), JSON.stringify(controls.getCameraParam()))
-}, [1000])
+  setTimeout(() => {
+    set(ref(database, '/initCtrl'), JSON.stringify(controls.getCameraParam()))
+  }, [1000])
+}

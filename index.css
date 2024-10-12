@@ -50,15 +50,15 @@ body {
 }
 
 .text {
-  max-width: 40rem;
-  min-width: 40rem;
-  padding-top: 1rem;
-  padding-bottom: 20dvh;
+  max-width: 38rem;
+  min-width: 38rem;
+  min-height: 100dvh;
   writing-mode: vertical-rl;
   white-space: pre-line;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .text .title {
