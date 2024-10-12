@@ -7,12 +7,9 @@ body {
   height: 100dvh;
   margin: 0;
   padding: 0;
-  font-size: 1.2rem;
   display: flex;
   justify-content: center;
-  color: #d8ecf8be;
   background: #05060f linear-gradient(0deg, rgba(216, 236, 248, .06), rgba(152, 192, 239, .06));
-  font-family: UoqMunThenKhung;
 }
 
 #splatCanvas {
@@ -50,7 +47,7 @@ body {
 }
 
 .text {
-  max-width: calc(100vw - 2rem);
+  max-width: calc(100vw);
   min-width: 39rem;
   min-height: 100dvh;
   writing-mode: vertical-rl;
@@ -71,7 +68,7 @@ body {
 }
 
 .text .description {
-  padding-top: 0.5rem;
-  font-size: 2rem;
-  line-height: 2.2rem;
+  font-size: 1.6rem;
+  font-family: UoqMunThenKhung;
+  color: #d8ecf8be;
 }
