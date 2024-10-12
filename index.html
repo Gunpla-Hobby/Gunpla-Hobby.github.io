@@ -8,9 +8,14 @@
   <meta property="og:image" content="https://gunpla-hobby.github.io/thumbnail.png">
   <meta property="og:type" content="website">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>祥平君的微型宇宙</title>
-  <link rel="stylesheet" href="index.css" />
-  <script src="data.js"></script>
+
+  <link rel="stylesheet" href="eclipx.css?dummy=1728741348 " />
+  <script src="eclipx.js?dummy=1728741348"></script>
+
+  <link rel="stylesheet" href="index.css?dummy=1728741348 " />
+  <script src="data.js?dummy=1728741348"></script>
 </head>
 
 <body>
@@ -55,32 +60,7 @@
     </div>
   </div>
 
-
-  <script>
-    const loadScript = (name, useModule = true) => new Promise((resolve) => {
-      const script = document.createElement('script')
-      script.src = `${name}?dummy = ${new Date().getTime()} `
-      script.type = useModule ? 'module' : 'text/javascript'
-      script.onload = resolve
-      document.head.appendChild(script)
-    })
-
-    const loadStyle = (name) => new Promise((resolve) => {
-      const link = document.createElement('link')
-      link.rel = 'stylesheet'
-      link.href = `${name}?dummy = ${Math.floor(new Date().getTime())}`
-      link.onload = resolve
-      document.head.appendChild(link)
-    })
-
-    Promise.all([
-      loadStyle('eclipx.css'),
-      loadScript('eclipx.js'),
-      loadScript('gsplat.js'),
-    ]).then(() => {
-      loadScript('index.js')
-    })
-  </script>
+  <script src="index.js?dummy=1728741348"></script>
 </body>
 
 </html>
