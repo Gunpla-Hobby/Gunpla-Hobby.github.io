@@ -71,8 +71,28 @@ loadDataItem(window.data[0])
 window.addEventListener('resize', checkIfHorizontal)
 checkIfHorizontal()
 
+/*
 if (sessionStorage.debug) {
   document.getElementById('particleCanvas').style.display = 'none'
-  const getCameraParam = () => prompt('initCtrl', JSON.stringify(controls.getCameraParam()))
-  canvas.addEventListener('touchend', () => setTimeout(() => getCameraParam, [3000]))
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAPwxFKKRVV8WNtNEGxdYtStHwe6A4cBdA",
+    authDomain: "gunpla-hobby.firebaseapp.com",
+    databaseURL: "https://gunpla-hobby-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "gunpla-hobby",
+    storageBucket: "gunpla-hobby.appspot.com",
+    messagingSenderId: "165696452489",
+    appId: "1:165696452489:web:6fe3240a62637d1b9c9358"
+  };
+
+  const app = firebase.initializeApp(firebaseConfig);
+  const database = firebase.database();
+
+  const appCheck = firebase.appCheck();
+  appCheck.activate('YOUR_RECAPTCHA_SITE_KEY', true);
+
+  setTimeout(() => {
+    JSON.stringify(controls.getCameraParam())
+  }, [1000])
 }
+*/
