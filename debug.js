@@ -12,8 +12,8 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js"
 
 
+console.log(window.location.pathname)
 if (window.location.pathname.startsWith('/debug')) {
-  console.log(window.location.pathname)
 
   document.getElementById('particleCanvas').style.display = 'none'
 
