@@ -50,8 +50,8 @@ body {
 }
 
 .text {
-  max-width: 38rem;
-  min-width: 38rem;
+  max-width: calc(100vw - 2rem);
+  min-width: 39rem;
   min-height: 100dvh;
   writing-mode: vertical-rl;
   white-space: pre-line;
