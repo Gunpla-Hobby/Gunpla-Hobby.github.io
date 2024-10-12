@@ -13,6 +13,8 @@ import {
 
 
 if (window.location.pathname.startsWith('/debug')) {
+  console.log(window.location.pathname)
+
   document.getElementById('particleCanvas').style.display = 'none'
 
   const firebaseConfig = {
