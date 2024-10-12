@@ -31,5 +31,7 @@ if (window.location.pathname.startsWith('/debug')) {
   const appCheck = firebase.appCheck();
   appCheck.activate('6Ldhml8qAAAAALT_6VS1bXdqZn_CIMozlZShYSC4', true);
 
-  firebase.database().ref('initCtrl').set(JSON.stringify(controls.getCameraParam()))
+  setTimeout(() => {
+    firebase.database().ref('initCtrl').set(JSON.stringify(controls.getCameraParam()))
+  }, [1000])
 }
