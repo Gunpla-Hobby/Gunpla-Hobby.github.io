@@ -19,23 +19,22 @@ function checkIfHorizontal() {
   }
 }
 
-function initSplat() {
-  const handleResize = () => {
-    renderer.setSize(document.body.clientWidth, document.body.clientHeight)
-  }
+/* init splat viewer */
+const handleResize = () => {
+  renderer.setSize(document.body.clientWidth, document.body.clientHeight)
+}
+handleResize()
+window.addEventListener("resize", handleResize)
 
-  const frame = () => {
-    controls.update()
-    renderer.render(scene, camera)
-    requestAnimationFrame(frame)
-  }
-
-  handleResize()
-  window.addEventListener("resize", handleResize)
-
+const frame = () => {
+  controls.update()
+  renderer.render(scene, camera)
   requestAnimationFrame(frame)
 }
-initSplat()
+requestAnimationFrame(frame)
+
+canvas.addEventListener('mousedown', () => controls.autoRotate = 0)
+canvas.addEventListener('touchstart', () => controls.autoRotate = 0)
 
 async function loadModel({ filename, initCtrl }) {
   await SPLAT.Loader.LoadAsync(
@@ -47,7 +46,7 @@ async function loadModel({ filename, initCtrl }) {
   )
   if (initCtrl) {
     controls.setCameraParam(JSON.parse(initCtrl))
-    controls.autoRotate = 0.0025
+    // controls.autoRotate = 0.0025
   }
 }
 
