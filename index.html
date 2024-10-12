@@ -36,17 +36,13 @@
   </script>
   <!-- End Single Page Apps for GitHub Pages -->
 
-  <link rel="stylesheet" href="eclipx.css?dummy=1728751863" />
-  <script src="eclipx.js?dummy=1728751863" defer></script>
+  <link rel="stylesheet" href="eclipx.css?dummy=1728752037" />
+  <script src="eclipx.js?dummy=1728752037" defer></script>
 
-  <link rel="stylesheet" href="index.css?dummy=1728751863" />
+  <link rel="stylesheet" href="index.css?dummy=1728752037" />
 
-  <script src="data.js?dummy=1728751863"></script>
-  <script src="index.js?dummy=1728751863" type="module" defer></script>
-
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-check.js"></script>
+  <script src="data.js?dummy=1728752037"></script>
+  <script src="index.js?dummy=1728752037" type="module" defer></script>
 </head>
 
 <body>
@@ -90,6 +86,17 @@
       <img src="splatData/GGun01.png"></img>
     </div>
   </div>
+  <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js'
+
+    // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
+    import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js'
+
+    // Add Firebase products that you want to use
+    import { getAuth } from 'https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js'
+    import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js'
+  </script>
 </body>
 
 </html>
