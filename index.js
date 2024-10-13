@@ -70,7 +70,8 @@ let itemIdx = 0
 // 0 is filename, step always start from 1
 let stepIdx = 1
 
-async function next({ target }) {
+const nextBtn = document.getElementById('nextBtn')
+async function next() {
   // setNextBtnHighlight(true)
   if (stepIdx === window.data[itemIdx].length - 1) {
     stepIdx = 1
@@ -79,12 +80,15 @@ async function next({ target }) {
   } else {
     stepIdx += 1
   }
+  if (!window.data[itemIdx + 1]) {
+    nextBtn.style.visibility = 'hidden'
+  }
   if (window.data[itemIdx][stepIdx][0]) {
     controls.setCameraParam(JSON.parse(window.data[itemIdx][stepIdx][0]))
   }
   loadText(window.data[itemIdx][stepIdx])
 }
-document.getElementById('nextBtn').addEventListener('click', next)
+nextBtn.addEventListener('click', next)
 
 async function prev() {
   if (stepIdx === 1) {

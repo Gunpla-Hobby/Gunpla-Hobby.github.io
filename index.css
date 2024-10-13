@@ -10,6 +10,7 @@ body {
   display: flex;
   justify-content: center;
   background: #05060f linear-gradient(0deg, rgba(216, 236, 248, .06), rgba(152, 192, 239, .06));
+  user-select: none !important;
 }
 
 body::before {
@@ -109,7 +110,6 @@ body::after {
   color: #d8ecf8be;
   font-size: 1.8rem;
   line-height: 1.8rem;
-  user-select: none;
   padding-bottom: 8rem;
 }
 
@@ -131,6 +131,7 @@ body::after {
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: end;
+  padding-bottom: 2rem;
 }
 
 button {
