@@ -24,13 +24,14 @@
     }(window.location))
   </script>
 
-  <link rel="stylesheet" href="/eclipx.css?dummy=1728757997" />
-  <script src="/eclipx.js?dummy=1728757997" defer></script>
+  <link rel="stylesheet" href="/eclipx.css?dummy=1728815076" />
+  <script src="/eclipx.js?dummy=1728815076" defer></script>
 
-  <link rel="stylesheet" href="/index.css?dummy=1728757997" />
+  <script src="/circularProgressBar.min.js"></script>
 
-  <script src="/data.js?dummy=1728757997" defer></script>
-  <script src="/index.js?dummy=1728757997" type="module" defer></script>
+  <link rel="stylesheet" href="/index.css?dummy=1728815076" />
+  <script src="/data.js?dummy=1728815076" defer></script>
+  <script src="/index.js?dummy=1728815076" type="module" defer></script>
 </head>
 
 <body>
@@ -60,21 +61,13 @@
     </div>
   </div>
 
-
-  <div class="text">
-    <div class="description"></div>
-    <div class="title"></div>
-  </div>
+  <div class="text title"></div>
+  <div class="text description"></div>
 
   <canvas id="splatCanvas"></canvas>
 
-  <div class="swiper">
-    <!--template id="slide-template">
-      </template-->
-    <div class="item">
-      <img src="/splatData/GGun01.png"></img>
-    </div>
-  </div>
+  <div class="pie" data-pie='{ "percent": 80 }'></div>
+
 </body>
 
 </html>

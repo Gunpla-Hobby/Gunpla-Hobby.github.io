@@ -16,18 +16,6 @@ const controls = new SPLAT.OrbitControls(camera, canvas, 0, 0, 0, false)
 controls.zoomSpeed = 0.5
 controls.orbitSpeed = 2
 
-function checkIfHorizontal() {
-  const dvh100 = window.innerHeight
-  const vw100 = window.innerWidth
-  if (dvh100 < vw100) {
-    document.body.classList.add('horizontal')
-  } else {
-    document.body.classList.remove('horizontal')
-  }
-}
-window.addEventListener('resize', checkIfHorizontal)
-checkIfHorizontal()
-
 /* init splat viewer */
 const handleResize = () => {
   renderer.setSize(document.body.clientWidth, document.body.clientHeight)
@@ -60,14 +48,17 @@ async function loadModel({ filename, initCtrl }) {
 }
 
 function loadDataItem(item) {
-  const title = document.querySelector('.text .title')
+  const title = document.querySelector('.text.title')
   title.textContent = item.title
   title.style.fontFamily = `${item.titleFont}, "UoqMunThenKhung"`
-  document.querySelector('.text .description').textContent = item.description
+  document.querySelector('.text.description').textContent = item.description
   loadModel(item)
 }
 
 loadDataItem(window.data[0])
+
+const circle = new CircularProgressBar("pie");
+circle.initial();
 
 // data.forEach(([fileName, title, desc]) => {
 //   const template = document.getElementById('slide-template')
