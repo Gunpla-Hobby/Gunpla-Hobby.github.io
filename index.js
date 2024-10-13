@@ -51,14 +51,14 @@ function loadText([, right, left]) {
       elem.classList.remove('headline')
     }
   }
-  const rightElem = document.querySelector('.caption.right')
+  const rightElem = document.querySelector('.msg.right')
   if (right) {
     applyTextToElem(rightElem, right)
   } else {
     rightElem.textContent = ''
   }
 
-  const leftElem = document.querySelector('.caption.left')
+  const leftElem = document.querySelector('.msg.left')
   if (left) {
     applyTextToElem(leftElem, left)
   } else {
@@ -71,8 +71,23 @@ let itemIdx = 0
 let stepIdx = 1
 
 const nextBtn = document.getElementById('nextBtn')
+const prevBtn = document.getElementById('prevBtn')
+
+function checkBtn() {
+  if (stepIdx === window.data[itemIdx].length - 1 && !window.data[itemIdx + 1]) {
+    nextBtn.style.display = 'none'
+  } else {
+    nextBtn.style.display = 'block'
+  }
+  if (stepIdx === 1 && !itemIdx) {
+    prevBtn.style.display = 'none'
+  } else {
+    prevBtn.style.display = 'block'
+  }
+}
+
 async function next() {
-  // setNextBtnHighlight(true)
+  nextBtn.blur()
   if (stepIdx === window.data[itemIdx].length - 1) {
     stepIdx = 1
     itemIdx += 1
@@ -80,17 +95,14 @@ async function next() {
   } else {
     stepIdx += 1
   }
-  if (!window.data[itemIdx + 1]) {
-    nextBtn.style.visibility = 'hidden'
-  }
-  if (window.data[itemIdx][stepIdx][0]) {
-    controls.setCameraParam(JSON.parse(window.data[itemIdx][stepIdx][0]))
-  }
+  checkBtn()
+  controls.setCameraParam(JSON.parse(window.data[itemIdx][stepIdx][0]))
   loadText(window.data[itemIdx][stepIdx])
 }
 nextBtn.addEventListener('click', next)
 
 async function prev() {
+  prevBtn.blur()
   if (stepIdx === 1) {
     stepIdx = 1
     itemIdx -= 1
@@ -98,11 +110,11 @@ async function prev() {
   } else {
     stepIdx -= 1
   }
-  if (window.data[itemIdx][stepIdx][0]) {
-    controls.setCameraParam(JSON.parse(window.data[itemIdx][stepIdx][0]))
-  }
+  checkBtn()
+  controls.setCameraParam(JSON.parse(window.data[itemIdx][stepIdx][0]))
   loadText(window.data[itemIdx][stepIdx])
 }
+prevBtn.addEventListener('click', prev);
 
 (async () => {
   loadText(window.data[0][1])

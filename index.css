@@ -102,7 +102,7 @@ body::after {
   }
 }
 
-.caption {
+.msg {
   padding: 1rem;
   font-family: UoqMunThenKhung;
   writing-mode: vertical-rl;
@@ -110,15 +110,15 @@ body::after {
   color: #d8ecf8be;
   font-size: 1.8rem;
   line-height: 1.8rem;
-  padding-bottom: 8rem;
+  padding-bottom: 9rem;
 }
 
-.caption.left {
+.msg.left {
   display: flex;
   align-items: flex-end;
 }
 
-.caption.headline {
+.msg.headline {
   color: #d8ecf8;
   text-shadow: 0 2px 16px rgba(174, 207, 242, .24);
   background: linear-gradient(0deg, #d8ecf8 0, #98c0ef 100%);
