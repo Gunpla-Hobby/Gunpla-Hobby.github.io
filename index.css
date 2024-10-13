@@ -105,11 +105,12 @@ body::after {
   padding: 1rem;
   font-family: UoqMunThenKhung;
   writing-mode: vertical-rl;
-  white-space: pre;
+  white-space: pre-wrap;
   color: #d8ecf8be;
   font-size: 1.8rem;
   line-height: 1.8rem;
   user-select: none;
+  padding-bottom: 8rem;
 }
 
 .caption.left {
@@ -155,10 +156,12 @@ button> :first-child {
   display: block;
 }
 
-button:hover> :first-child {
+button:hover> :first-child,
+button:active> :first-child {
   display: none;
 }
 
-button:hover> :last-child {
+button:hover> :last-child,
+button:active> :last-child {
   display: block;
 }

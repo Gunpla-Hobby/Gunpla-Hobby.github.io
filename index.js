@@ -40,18 +40,15 @@ async function loadModel(filename) {
 }
 
 function loadText([, right, left]) {
-  const applyTextToElem = (elem, { font, size, h, d }) => {
+  const applyTextToElem = (elem, { font, sz, t }) => {
     elem.style.fontFamily = font || ''
-    elem.style.fontSize = size
-    elem.style.lineHeight = size
-    if (h) {
+    elem.textContent = t
+    elem.style.fontSize = `${sz}rem`
+    elem.style.lineHeight = `${sz + 0.5}rem`
+    if (sz > 2) {
       elem.classList.add('headline')
-      elem.textContent = h
-    } else if (d) {
-      elem.classList.remove('headline')
-      elem.textContent = d
     } else {
-      elem.textContent = ''
+      elem.classList.remove('headline')
     }
   }
   const rightElem = document.querySelector('.caption.right')
