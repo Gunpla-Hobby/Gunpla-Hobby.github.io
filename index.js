@@ -33,40 +33,80 @@ requestAnimationFrame(frame)
 canvas.addEventListener('mousedown', () => controls.autoRotate = 0)
 canvas.addEventListener('touchstart', () => controls.autoRotate = 0)
 
-async function loadModel({ filename, initCtrl }) {
-  await SPLAT.Loader.LoadAsync(
-    `/splatData/${filename}.splat`,
-    scene,
-    (progress) => {
-      // console.log(progress)
-    },
-  )
-  if (initCtrl) {
-    controls.setCameraParam(JSON.parse(initCtrl))
-    // controls.autoRotate = 0.0025
+async function loadModel(filename) {
+  await SPLAT.Loader.LoadAsync(`/splatData/${filename}.splat`, scene, (progress) => {
+    // console.log(progress)
+  })
+}
+
+function loadText([, right, left]) {
+  const applyTextToElem = (elem, { font, size, h, d }) => {
+    elem.style.fontFamily = font || ''
+    elem.style.fontSize = size
+    elem.style.lineHeight = size
+    if (h) {
+      elem.classList.add('headline')
+      elem.textContent = h
+    } else if (d) {
+      elem.classList.remove('headline')
+      elem.textContent = d
+    } else {
+      elem.textContent = ''
+    }
+  }
+  const rightElem = document.querySelector('.caption.right')
+  if (right) {
+    applyTextToElem(rightElem, right)
+  } else {
+    rightElem.textContent = ''
+  }
+
+  const leftElem = document.querySelector('.caption.left')
+  if (left) {
+    applyTextToElem(leftElem, left)
+  } else {
+    leftElem.textContent = ''
   }
 }
 
-function loadDataItem(item) {
-  const title = document.querySelector('.text.title')
-  title.textContent = item.title
-  title.style.fontFamily = `${item.titleFont}, "UoqMunThenKhung"`
-  document.querySelector('.text.description').textContent = item.description
-  loadModel(item)
+let itemIdx = 0
+// 0 is filename, step always start from 1
+let stepIdx = 1
+
+async function next() {
+  if (stepIdx === window.data[itemIdx].length - 1) {
+    stepIdx = 1
+    itemIdx += 1
+    await loadModel(window.data[itemIdx][0])
+  } else {
+    stepIdx += 1
+  }
+  if (window.data[itemIdx][stepIdx][0]) {
+    controls.setCameraParam(JSON.parse(window.data[itemIdx][stepIdx][0]))
+  }
+  loadText(window.data[itemIdx][stepIdx])
 }
 
-loadDataItem(window.data[0])
+async function prev() {
+  if (stepIdx === 1) {
+    stepIdx = 1
+    itemIdx -= 1
+    await loadModel(window.data[itemIdx][0])
+  } else {
+    stepIdx -= 1
+  }
+  if (window.data[itemIdx][stepIdx][0]) {
+    controls.setCameraParam(JSON.parse(window.data[itemIdx][stepIdx][0]))
+  }
+  loadText(window.data[itemIdx][stepIdx])
+}
 
-const circle = new CircularProgressBar("pie");
-circle.initial();
-
-// data.forEach(([fileName, title, desc]) => {
-//   const template = document.getElementById('slide-template')
-//   const clone = template.content.cloneNode(true)
-//   clone.querySelector('img').src = `splatData/${fileName}.png`
-//   document.querySelector('.swiper-wrapper').append(clone)
-// })
-
+(async () => {
+  loadText(window.data[0][1])
+  await loadModel(window.data[0][0])
+  console.log(window.data[0][1][0])
+  controls.setCameraParam(JSON.parse(window.data[0][1][0]))
+})()
 
 if (window.location.pathname.startsWith('/debug')) {
   document.getElementById('particleCanvas').style.display = 'none'
@@ -87,7 +127,11 @@ if (window.location.pathname.startsWith('/debug')) {
 
   const database = getDatabase(app)
 
-  setTimeout(() => {
+  setInterval(() => {
     set(ref(database, '/initCtrl'), JSON.stringify(controls.getCameraParam()))
+  }, [1000])
+} else if (sessionStorage.debug) {
+  setInterval(() => {
+    console.log(JSON.stringify(controls.getCameraParam()))
   }, [1000])
 }

@@ -22,16 +22,19 @@
         );
       }
     }(window.location))
+
+    function bypassEvent(e) {
+      console.log(e)
+      e.preventDefault()
+    }
   </script>
 
-  <link rel="stylesheet" href="/eclipx.css?dummy=1728815076" />
-  <script src="/eclipx.js?dummy=1728815076" defer></script>
+  <link rel="stylesheet" href="/eclipx.css?dummy=1728839053" />
+  <script src="/eclipx.js?dummy=1728839053" defer></script>
 
-  <script src="/circularProgressBar.min.js"></script>
-
-  <link rel="stylesheet" href="/index.css?dummy=1728815076" />
-  <script src="/data.js?dummy=1728815076" defer></script>
-  <script src="/index.js?dummy=1728815076" type="module" defer></script>
+  <link rel="stylesheet" href="/index.css?dummy=1728839053" />
+  <script src="/data.js?dummy=1728839053" defer></script>
+  <script src="/index.js?dummy=1728839053" type="module" defer></script>
 </head>
 
 <body>
@@ -61,13 +64,12 @@
     </div>
   </div>
 
-  <div class="text title"></div>
-  <div class="text description"></div>
-
   <canvas id="splatCanvas"></canvas>
 
-  <div class="pie" data-pie='{ "percent": 80 }'></div>
+  <div class="caption right"></div>
+  <div class="caption left"></div>
 
+  </div>
 </body>
 
 </html>

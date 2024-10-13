@@ -58,28 +58,36 @@ body::after {
 
 @font-face {
   font-family: 'UoqMunThenKhung';
-  src: url('font/UoqMunThenKhung-1.000.ttf') format("truetype");
+  src: url('font/UoqMunThenKhung-1.000.woff2') format("woff2");
 }
 
 @font-face {
   font-family: 'KsoTouryu';
-  src: url('font/KsoTouryu.otf') format("opentype");
+  src: url('font/KsoTouryu.woff2') format("woff2");
 }
 
-.text {
+.caption {
+  padding: 1rem;
+  font-family: UoqMunThenKhung;
+  writing-mode: vertical-rl;
+  white-space: pre;
+  color: #d8ecf8be;
+  font-size: 1.8rem;
+  line-height: 1.8rem;
+  pointer-events: none;
+
+  position: fixed;
   min-width: calc(100vw - 1rem);
   max-width: calc(100vw - 1rem);
   min-height: calc(100dvh - 1rem);
   max-height: calc(100dvh - 1rem);
-  white-space: pre-line;
-  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 @media (min-width:961px) {
-  .text {
+  .caption {
     min-width: 36rem;
     max-width: 36rem;
     min-height: 66rem;
@@ -87,22 +95,16 @@ body::after {
   }
 }
 
-.text.title {
+.caption.left {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  writing-mode: vertical-rl;
-  font-size: 6rem;
-  line-height: 6rem;
+  align-items: flex-end;
+}
+
+.caption.headline {
   color: #d8ecf8;
   text-shadow: 0 2px 16px rgba(174, 207, 242, .24);
   background: linear-gradient(0deg, #d8ecf8 0, #98c0ef 100%);
   background-clip: text;
-}
-
-.text.description {
-  writing-mode: vertical-rl;
-  font-size: 1.6rem;
-  font-family: UoqMunThenKhung;
-  color: #d8ecf8be;
+  font-size: 6rem;
+  line-height: 6rem;
 }
