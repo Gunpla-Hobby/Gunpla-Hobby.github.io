@@ -11,6 +11,13 @@
 
   <title>祥平君的微型宇宙</title>
 
+  <link rel="stylesheet" href="/eclipx.css?dummy=1728847807" />
+  <script src="/eclipx.js?dummy=1728847807" defer></script>
+
+  <link rel="stylesheet" href="/index.css?dummy=1728847807" />
+  <script src="/data.js?dummy=1728847807" defer></script>
+  <script src="/index.js?dummy=1728847807" type="module" defer></script>
+
   <script type="text/javascript">
     (function (l) {
       if (l.search[1] === '/') {
@@ -22,19 +29,7 @@
         );
       }
     }(window.location))
-
-    function bypassEvent(e) {
-      console.log(e)
-      e.preventDefault()
-    }
   </script>
-
-  <link rel="stylesheet" href="/eclipx.css?dummy=1728839053" />
-  <script src="/eclipx.js?dummy=1728839053" defer></script>
-
-  <link rel="stylesheet" href="/index.css?dummy=1728839053" />
-  <script src="/data.js?dummy=1728839053" defer></script>
-  <script src="/index.js?dummy=1728839053" type="module" defer></script>
 </head>
 
 <body>
@@ -66,8 +61,42 @@
 
   <canvas id="splatCanvas"></canvas>
 
-  <div class="caption right"></div>
-  <div class="caption left"></div>
+  <div class="layer caption right"></div>
+  <div class="layer caption left"></div>
+
+  <div class="layer btn-layer">
+    <button id="nextBtn">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path stroke-dasharray="64" stroke-dashoffset="64"
+            d="M3 12c0 4.97 4.03 9 9 9c4.97 0 9 -4.03 9 -9c0 -4.97 -4.03 -9 -9 -9c-4.97 0 -9 4.03 -9 9Z">
+            <animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="64;0" />
+          </path>
+          <path stroke-dasharray="12" stroke-dashoffset="12" d="M7 12h9.5">
+            <animate fill="freeze" attributeName="stroke-dashoffset" begin="0.35s" dur="0.1s" values="12;0" />
+          </path>
+          <path stroke-dasharray="8" stroke-dashoffset="8" d="M17 12l-4 4M17 12l-4 -4">
+            <animate fill="freeze" attributeName="stroke-dashoffset" begin="0.45s" dur="0.1s" values="8;0" />
+          </path>
+        </g>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path fill="currentColor" fill-opacity="0" stroke-dasharray="64" stroke-dashoffset="64"
+            d="M3 12c0 4.97 4.03 9 9 9c4.97 0 9 -4.03 9 -9c0 -4.97 -4.03 -9 -9 -9c-4.97 0 -9 4.03 -9 9Z">
+            <animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="64;0" />
+            <animate fill="freeze" attributeName="fill-opacity" begin="0.55s" dur="0.075s" values="0;0.3" />
+          </path>
+          <path stroke-dasharray="12" stroke-dashoffset="12" d="M7 12h9.5">
+            <animate fill="freeze" attributeName="stroke-dashoffset" begin="0.35s" dur="0.1s" values="12;0" />
+          </path>
+          <path stroke-dasharray="8" stroke-dashoffset="8" d="M17 12l-4 4M17 12l-4 -4">
+            <animate fill="freeze" attributeName="stroke-dashoffset" begin="0.45s" dur="0.1s" values="8;0" />
+          </path>
+        </g>
+      </svg>
+    </button>
+  </div>
 
   </div>
 </body>

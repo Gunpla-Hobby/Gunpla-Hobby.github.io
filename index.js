@@ -73,7 +73,8 @@ let itemIdx = 0
 // 0 is filename, step always start from 1
 let stepIdx = 1
 
-async function next() {
+async function next({ target }) {
+  // setNextBtnHighlight(true)
   if (stepIdx === window.data[itemIdx].length - 1) {
     stepIdx = 1
     itemIdx += 1
@@ -86,6 +87,7 @@ async function next() {
   }
   loadText(window.data[itemIdx][stepIdx])
 }
+document.getElementById('nextBtn').addEventListener('click', next)
 
 async function prev() {
   if (stepIdx === 1) {
@@ -104,7 +106,6 @@ async function prev() {
 (async () => {
   loadText(window.data[0][1])
   await loadModel(window.data[0][0])
-  console.log(window.data[0][1][0])
   controls.setCameraParam(JSON.parse(window.data[0][1][0]))
 })()
 
